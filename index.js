@@ -21,6 +21,10 @@ app.get("/reserve", function(req, res) {
 	res.sendFile(path.join(__dirname, "public", "reserve.html"));
 });
 
+app.get("/reserved", function(req, res) {
+	res.sendFile(path.join(__dirname, "public", "reserved.html"));
+});
+
 app.get("/tables", function(req, res) {
 	res.sendFile(path.join(__dirname, "public", "tables.html"));
 });
@@ -29,9 +33,12 @@ app.post("/reserve", function(req, res) {
 	var name = req.body.customerName;
 	var size = Number(req.body.customerSize);
 	// do something here
-	res.json({
-		message: "received"
-	});
+	var tableAvailable = false;
+	if (tableAvailable) {
+		res.redirect("/reserved?opening=true")
+	} else {
+		res.redirect("/reserved?opening=false")
+	}
 });
 
 // create a new reservation
