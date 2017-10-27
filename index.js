@@ -41,17 +41,6 @@ app.post("/reserve", function(req, res) {
 	}
 });
 
-// create a new reservation
-app.post("api/new", function(req, res) {
-	var newReservation = req.body;
-	newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
-
-	console.log(newReservation);
-
-	reservations.push(newReservation);
-
-	res.json(newReservation);
-});
 
 app.listen(PORT, function() {
 	console.log(`App is listening at http://localhost:${PORT}`)
