@@ -25,6 +25,15 @@ app.get("/tables", function(req, res) {
 	res.sendFile(path.join(__dirname, "public", "tables.html"));
 });
 
+app.post("/reserve", function(req, res) {
+	var name = req.body.customerName;
+	var size = Number(req.body.customerSize);
+	// do something here
+	res.json({
+		message: "received"
+	});
+});
+
 // create a new reservation
 app.post("api/new", function(req, res) {
 	var newReservation = req.body;
